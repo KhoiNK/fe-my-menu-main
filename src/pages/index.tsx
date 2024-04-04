@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
+import Welcome from '../components/Welcome';
+// eslint-disable-next-line
+const Booking = lazy(() => import('@booking/Booking'));
 
 const Main: React.FC = () => {
   return (
-    <div>
-      <h1>Welcome to my website!</h1>
-      <p>This is a paragraph of text on the homepage.</p>
-    </div>
+    <Suspense fallback={<div>Loading</div>}>
+      <Welcome />
+      <Booking />
+    </Suspense>
   );
 };
 
